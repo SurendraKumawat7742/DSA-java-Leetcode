@@ -1,67 +1,29 @@
 class Solution {
     public long pickGifts(int[] gifts, int k) {
-        // int n = gifts.length;
-        // List<Integer> list = new ArrayList<>();
-        // for(int gift : gifts){
-        //     list.add(gift);
-        // }
-        // Collections.sort(list);
-
-        // for(int i=0; i<k; i++){
-        //     int maxEle = list.get(n-1);
-        //     list.remove(n-1);
-        //     int sqrtEle = (int)Math.floor(Math.sqrt(maxEle));
-
-        //     int spotOfsqrt = Collections.binarySearch(list , sqrtEle);
-
-        //     if(spotOfsqrt < 0){
-        //         spotOfsqrt = -(spotOfsqrt+1);
-        //     }
-        //     list.add(spotOfsqrt , sqrtEle);
-        // }
-
-        // int numOfGifts = 0;
-        // for(int gift : list){
-        //     numOfGifts += gift;
-        // }
-        // return numOfGifts;
-
-
-          int n = gifts.length;
-
-        // Create a list from the gifts array and sort it
-        List<Integer> sortedGifts = new ArrayList<>();
+         // Convert int[] to List<Integer> manually for efficient initialization of the heap
+        // Negate values to simulate max-heap
+        List<Integer> giftsList = new ArrayList<>();
         for (int gift : gifts) {
-            sortedGifts.add(gift);
+            giftsList.add(-gift);
         }
-        Collections.sort(sortedGifts);
 
-        // Perform the operation k times
+        // Initialize giftsHeap from giftsList
+        PriorityQueue<Integer> giftsHeap = new PriorityQueue<>(giftsList);
+        // Perform the operation 'k' times
         for (int i = 0; i < k; i++) {
-            // Get the largest element (last element in the sorted list)
-            int maxElement = sortedGifts.get(n - 1);
-            sortedGifts.remove(n - 1);
+            // Get the maximum element from the heap (top element)
+            int maxElement = -giftsHeap.poll();
 
-            // Calculate the square root of the max element
-            int sqrtElement = (int) Math.floor(Math.sqrt(maxElement));
+            // Insert the floor of the square root of the maximum element back into the heap
+            giftsHeap.offer(-(int) Math.sqrt(maxElement));
+             }
 
-            // Find the index where the square root should be inserted
-            int spotOfSqrt = Collections.binarySearch(sortedGifts, sqrtElement);
-
-            // If the value isn't found, binarySearch returns a negative
-             if (spotOfSqrt < 0) {
-                spotOfSqrt = -(spotOfSqrt + 1);
-            }
-
-            sortedGifts.add(spotOfSqrt, sqrtElement); // Insert the square root at the correct index
-        }
-
-        // Calculate the sum of the remaining gifts in the array
+        // Accumulate the sum of the elements in the heap
         long numberOfRemainingGifts = 0;
-        for (int gift : sortedGifts) {
-            numberOfRemainingGifts += gift;
+        while (!giftsHeap.isEmpty()) {
+            numberOfRemainingGifts -= giftsHeap.poll();
         }
 
-        return numberOfRemainingGifts; 
+        return numberOfRemainingGifts;
     }
 }
