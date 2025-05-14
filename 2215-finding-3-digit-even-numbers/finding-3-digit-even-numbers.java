@@ -1,6 +1,6 @@
 class Solution {
     public int[] findEvenNumbers(int[] digits) {
-          Set<Integer> nums = new HashSet<>();
+        Set<Integer> nums = new HashSet<>();
         int n = digits.length;
         // Traverse the indices of three digits
         for (int i = 0; i < n; ++i) {
