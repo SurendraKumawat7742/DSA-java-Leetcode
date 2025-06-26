@@ -9,14 +9,11 @@ class Solution {
             if(c == '0'){
                 ans++;
                 power++;
-            }else{
-                if(power < 31 && (value+(1L << power)) <= k){
+            }else if(power < 31 && (value+(1L << power)) <= k){
+                
                     value += (1L << power); 
                     ans++;
                     power++;
-                }else{
-                    power++;
-                }
                 
             }
             
