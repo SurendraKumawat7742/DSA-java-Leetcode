@@ -13,7 +13,10 @@ class Solution {
         //     }
         // }
         // return majority;
-        int cnt = 1;
+
+
+    //2nd
+        int cnt = 1; 
         int n = nums.length;
         int k = n/2;
         Arrays.sort(nums);
