@@ -16,23 +16,12 @@ class Solution {
         // }
         // return true;
     // }
-
-    static Map<Integer, Boolean> memo; //DP
-    public boolean helper(int[] nums, int i){
-        if(i == nums.length-1) return true;
-        if(i >= nums.length || nums[i] == 0) return false;
-        if(memo.containsKey(i)) return false;
-
-        boolean res = false;
-        for(int j=1; j<=nums[i]; j++){
-            res = helper(nums, i+j);
-            if(res) return true;
-        }
-        memo.put(i, false);
-        return res;
-    }
     public boolean canJump(int[] nums){
-        memo = new HashMap<>();
-        return helper(nums, 0);
+        int maxReach = 0;
+        for(int i=0; i<nums.length; i++){
+            if(i > maxReach) return false;
+            maxReach = Math.max(maxReach, i + nums[i]);
+        }
+        return true;
     }
 }
