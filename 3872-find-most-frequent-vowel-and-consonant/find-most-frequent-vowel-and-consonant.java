@@ -1,22 +1,22 @@
 class Solution {
     public int maxFreqSum(String s) {
-        Map<Character, Integer> mpV = new HashMap<>();
-        Map<Character, Integer> mpC = new HashMap<>();
-
-        int i = 0;
-        int maxV = 0;
-        int maxC = 0;
-        while(i < s.length()){
+        s=s.toLowerCase();
+        int arr[]=new int[26];
+        for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
-            if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
-                mpV.put(c, mpV.getOrDefault(c,0)+1);
-                maxV = Math.max(maxV, mpV.get(c));
-            }else{
-                mpC.put(c, mpC.getOrDefault(c,0)+1);
-                maxC = Math.max(maxC, mpC.get(c));
-            }
-            i++;
+            arr[c-'a']++;
         }
-        return maxV+maxC;
+        int vmax=0;
+        int cmax=0;
+        for(int i=0;i<arr.length;i++){
+            
+            if((i==0||i==4||i==8||i==14||i==20)&&arr[i]>vmax){
+                vmax=arr[i];
+            }
+            else if((i!=0&&i!=4&&i!=8&&i!=14&&i!=20)&&arr[i]>cmax){
+                cmax=arr[i];
+            }
+        }
+        return vmax+cmax;
     }
 }
