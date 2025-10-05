@@ -6,9 +6,7 @@ class Solution {
         while(st <= end){
             char c = address.charAt(st);
             if(c == '.'){
-                sb.append('[');
-                sb.append(c);
-                sb.append(']');
+                sb.append("[.]");
             }else{
                 sb.append(c);
             }
