@@ -7,15 +7,11 @@ class Solution {
             if(s.charAt(i) == '1'){
                 cnt++;
             }else{
-                long add = (cnt*(cnt+1)/2);
-                add = add % MOD;
-                res += add;
+                res += (cnt*(cnt+1)/2)%MOD;
                 cnt = 0;
             }
         }
-        long add = (cnt*(cnt+1)/2);
-        add = add % MOD;
-        res += add;
+        res += (cnt*(cnt+1)/2)%MOD;
         return (int)res;
     }
 }
