@@ -31,7 +31,7 @@ class Solution {
 //2nd
         int n = events.length;
         Arrays.sort(events, (a,b) -> a[0] - b[0]);
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> (a - b));
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
         int result = 0;
         int day = 1;
         int i = 0;
