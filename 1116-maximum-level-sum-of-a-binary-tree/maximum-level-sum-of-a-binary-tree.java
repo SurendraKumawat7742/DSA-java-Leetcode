@@ -14,10 +14,9 @@
  * }
  */
 class Solution {
-    
     public int maxLevelSum(TreeNode root) {
         int maxSum = Integer.MIN_VALUE;
-        int ans=0, level=0;
+        int res = 0, level = 0;
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
         while(!q.isEmpty()){
@@ -35,9 +34,9 @@ class Solution {
             }
             if(maxSum < currSum){
                 maxSum = currSum;
-                ans = level;
+                res = level;
             }
         }
-        return ans;
+        return res;
     }
 }
