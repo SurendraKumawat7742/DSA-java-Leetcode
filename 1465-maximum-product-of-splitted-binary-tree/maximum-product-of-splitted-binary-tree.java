@@ -23,40 +23,6 @@ class Solution {
         }));
     }
 
-//1st - Brute Force
-
-    // static final int MOD = 1_000_000_007;
-    // long maxPro = 0;
-
-    // long totalSum(TreeNode root){
-    //     if(root == null){
-    //         return 0;
-    //     }
-    //     return root.val+totalSum(root.left)+totalSum(root.right);
-    // }
-    // long subTreeSum(TreeNode root){
-    //     if(root == null) return 0;
-    //     return root.val+subTreeSum(root.left)+subTreeSum(root.right);
-    // }
-    // void DFS(TreeNode node, TreeNode root, long total){
-    //     if(node == null) return;
-
-    //     if(node != root){
-    //         long SubtreeSum = subTreeSum(node);
-    //         long product = SubtreeSum*(total - SubtreeSum);
-    //         maxPro = Math.max(maxPro, product);
-    //     }
-    //     DFS(node.left, root, total);
-    //     DFS(node.right, root, total);
-    // }
-    // public int maxProduct(TreeNode root) {
-    //     long total = totalSum(root);
-    //     DFS(root, root, total);
-    //     return (int)(maxPro % MOD);
-    // }
-
-
-//2nd - Optimized
     static final int MOD = 1_000_000_007;
     long totalSum = 0;
     long maxPro = 0;
