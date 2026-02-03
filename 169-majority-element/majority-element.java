@@ -1,36 +1,16 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        // int majority = nums[0], lead =1;
-        // for(int i=1;i<nums.length;i++){
-        //     if(nums[i] == majority){
-        //         lead++;
-        //     }
-        //     else if(lead>0){
-        //         lead--;
-        //     }else{
-        //         majority = nums[i];
-        //         lead=1;
-        //     }
-        // }
-        // return majority;
-
-
-    //2nd
-        int cnt = 1; 
+        HashMap<Integer, Integer> map = new HashMap<>();
         int n = nums.length;
-        int k = n/2;
-        Arrays.sort(nums);
-        int res = nums[0];
-        for(int i=1; i<n; i++){
-            if(nums[i] == nums[i-1]){
-                cnt++;
-            }else{
-                cnt = 1;
-            }
-            if(cnt > k){
-                res = nums[i];
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+
+            if (map.get(num) > n / 2) {
+                return num;
             }
         }
-        return res;
+
+        return -1;
     }
 }
