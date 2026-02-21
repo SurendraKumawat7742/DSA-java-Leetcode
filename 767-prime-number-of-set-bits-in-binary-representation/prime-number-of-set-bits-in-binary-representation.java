@@ -3,10 +3,19 @@ class Solution {
         int cnt = 0;
         for(int i=left; i<=right; i++){
             int total = Integer.bitCount(i);
-            if(total == 2 || total == 3 ||total == 5 ||total == 7 ||total == 11 ||total == 13 ||total == 17 ||total == 19 ||total == 23 ||total == 29 ||total == 31 ){
+            if(checkPrime(total)){
                 cnt++;
             }
         }
         return cnt;
+    }
+    public boolean checkPrime(int n){
+        if(n < 2) return false;
+        for(int i=2; i<=Math.sqrt(n); i++){
+            if(n%i == 0){
+                return false;
+            }
+        }
+        return true;
     }
 }
