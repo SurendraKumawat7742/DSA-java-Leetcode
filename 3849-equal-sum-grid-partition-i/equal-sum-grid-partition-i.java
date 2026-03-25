@@ -10,16 +10,13 @@ class Solution {
             }
         }
 
-        boolean isTrue = false;
-
         long cntRowSum = 0;
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
                 cntRowSum += grid[i][j];
             }
             if(cntRowSum == (sum-cntRowSum)){
-                isTrue = true;
-                break;
+                return true;
             }
         }
 
@@ -29,11 +26,10 @@ class Solution {
                 cntColSum += grid[i][j];
             }
             if(cntColSum == (sum-cntColSum)){
-                isTrue = true;
-                break;
+                return true;
             }
         }
 
-        return isTrue;
+        return false;
     }
 }
