@@ -4,6 +4,7 @@ class Solution {
         int m = mat[0].length;
 
         k %= m;
+        if(k == 0) return true;
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
                 if(mat[i][j] != mat[i][(j+k)%m]){
