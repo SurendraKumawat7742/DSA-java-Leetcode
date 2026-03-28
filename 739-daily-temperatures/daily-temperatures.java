@@ -22,19 +22,34 @@ class Solution {
 
 
     //2nd
-        int[] res = new int[n];
-        res[n-1] = 0;
-        Stack<Integer> st = new Stack<>();
-        st.push(n-1);
+        // int[] res = new int[n];
+        // res[n-1] = 0;
+        // Stack<Integer> st = new Stack<>();
+        // st.push(n-1);
 
-        for(int i=n-2; i>=0; i--){
-            while(!st.isEmpty() && temp[i]>=temp[st.peek()]){
-                st.pop();
-            }
-            if(st.isEmpty()){
-                res[i] = 0;
-            }else{
-                res[i] = st.peek() - i;
+        // for(int i=n-2; i>=0; i--){
+        //     while(!st.isEmpty() && temp[i]>=temp[st.peek()]){
+        //         st.pop();
+        //     }
+        //     if(st.isEmpty()){
+        //         res[i] = 0;
+        //     }else{
+        //         res[i] = st.peek() - i;
+        //     }
+
+        //     st.push(i);
+        // }
+        // return res;
+
+
+    //3rd
+        int[] res = new int[n];
+        Stack<Integer> st = new Stack<>();
+
+        for(int i=0; i<n; i++){
+            while(!st.isEmpty() && temp[i] > temp[st.peek()]){
+                int idx = st.pop();
+                res[idx] = i-idx;
             }
 
             st.push(i);
