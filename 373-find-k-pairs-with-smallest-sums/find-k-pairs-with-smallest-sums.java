@@ -5,7 +5,7 @@ class Solution {
 
        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[0]-b[0]);
        List<List<Integer>> res = new ArrayList<>();
-       for(int i=0; i<n; i++){
+       for(int i=0; i<Math.min(n, k); i++){
         pq.offer(new int[]{nums1[i]+nums2[0], i, 0});
        }
        while(k-- > 0 && !pq.isEmpty()){
