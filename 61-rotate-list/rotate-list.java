@@ -13,27 +13,23 @@ class Solution {
         if(head == null || head.next == null || k == 0){
             return head;
         }
+        int n = 1;
         ListNode tail = head;
-        int length = 1;
         while(tail.next != null){
             tail = tail.next;
-            length++;
+            n++;
         }
-        //Circular LinkedList
         tail.next = head;
-        k %= length;
-        if(k == 0){
-            tail.next = null;//Undo circular
-            return head;
+        k %= n;
+        int step = n-k-1;
+        ListNode newTail = head;
+        while(step-- > 0){
+            newTail = newTail.next;
         }
-        //Find new tail (length-k-1 steps from head)
-        ListNode newtail = head;
-        for(int i=0; i<length - k - 1; i++){
-            newtail = newtail.next;
-        }
+        ListNode newHead = newTail.next;
 
-        ListNode newHead = newtail.next;
-        newtail.next = null;
+        newTail.next = null;
+
         return newHead;
     }
 }
