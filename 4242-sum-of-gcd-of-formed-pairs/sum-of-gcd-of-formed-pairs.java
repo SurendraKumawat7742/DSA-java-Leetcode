@@ -5,11 +5,12 @@ class Solution {
         int max = nums[0];
         for(int i=0; i<n; i++){
             max = Math.max(max, nums[i]);
-            if(max < nums[i]){
-                preGcd[i] = gcd(max, nums[i]);
-            }else{
-                preGcd[i] = gcd(nums[i], max);
-            }
+            preGcd[i] = gcd(max, nums[i]);
+            // if(max < nums[i]){
+            //     preGcd[i] = gcd(max, nums[i]);
+            // }else{
+            //     preGcd[i] = gcd(nums[i], max);
+            // }
         }
         Arrays.sort(preGcd);
         long sum = 0;
