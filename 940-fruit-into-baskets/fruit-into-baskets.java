@@ -1,9 +1,9 @@
 class Solution {
     public int totalFruit(int[] fruits) {
         int n = fruits.length;
-        int st=0, end=0;
-        int maxLen = 0;
         Map<Integer, Integer> mp = new HashMap<>();
+        int st = 0, end = 0;
+        int maxLen = 0;
         while(end < n){
             mp.put(fruits[end], mp.getOrDefault(fruits[end], 0)+1);
             while(mp.size() >= 3){
