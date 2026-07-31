@@ -23,21 +23,18 @@ class Solution {
         q.add(root);
         while(!q.isEmpty()){
             int levels = q.size();
-            List<Integer> list = new ArrayList<>();
-            for(int i=0; i<levels; i++){
-                if(q.peek().left != null){
-                    q.add(q.peek().left);
-                }
-                if(q.peek().right != null){
-                    q.add(q.peek().right);
-                }
-                list.add(q.remove().val);
-            }
             double sum = 0.0;
-            for(int i=0; i<list.size(); i++){
-                sum += list.get(i);
+            for(int i=0; i<levels; i++){
+                TreeNode f = q.remove();
+                sum += f.val;
+                if(f.left != null){
+                    q.add(f.left);
+                }
+                if(f.right != null){
+                    q.add(f.right);
+                }
             }
-            res.add(sum/list.size());
+            res.add(sum/levels);
         }
         return res;
     }
