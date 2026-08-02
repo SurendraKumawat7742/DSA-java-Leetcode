@@ -4,9 +4,10 @@ class Solution {
         long res = 0;
         for(int i=0; i<n; i++){
             for(int j=i+1; j<n; j++){
-                long div = gcd((long)nums[i],nums[j]);
-                long mul = ((long)nums[i]*(long)nums[j]);
-                res = Math.max(res, mul/(div*div));
+                long f = (long)nums[i];
+                long s = (long)nums[j];
+                long div = gcd(f,s);
+                res = Math.max(res, (f/div)*(s/div));
             }
         }
         return res;
